@@ -1,0 +1,11 @@
+FAILED_RDP_WITH_GEO_CL
+| extend latitude = extract("latitude:([0-9.-]+)", 1, RawData),
+         longitude = extract("longitude:([0-9.-]+)", 1, RawData),
+         destinationhost = extract("destinationhost:([^,]+)", 1, RawData),
+         username = extract("username:([^,]+)", 1, RawData),
+         sourcehost = extract("sourcehost:([^,]+)", 1, RawData),
+         state = extract("state:([^,]+)", 1, RawData),
+         country = extract("country:([^,]+)", 1, RawData),
+         label = extract("label:([^,]+)", 1, RawData),
+         timestamp = extract("timestamp:([^,]+)", 1, RawData)
+| project TimeGenerated, Computer, latitude, longitude, destinationhost, username, sourcehost, state, country, label, timestamp
